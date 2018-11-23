@@ -24,6 +24,32 @@ var matchNumber = a.length;
 var playerNumber = player_array.length;
 
 
+var i = 0;
+var j = 0;
+var sumRuns = [];
+var count = [];
+var avgRuns = [];
+for (i = 1; i < playerNumber; i++) {
+	sumRuns[i-1] = 0;
+	count[i-1] = 0;
+	for (j = 0; j < matchNumber; j++) {
+		if (!(a[j][player_array[i]].includes("*") || a[j][player_array[i]].includes("-"))) {
+			count[i-1]++;
+			sumRuns[i-1] += parseInt(a[j][player_array[i]]);
+		}
+		else if (a[j][player_array[i]].includes("*")) {
+			a[j][player_array[i]].replace("*", "");
+			sumRuns[i-1] += parseInt(a[j][player_array[i]]);
+		}
+	}
+	avgRuns[i-1] = sumRuns[i-1]/count[i-1];
+}
+
+console.log(sumRuns);
+console.log(count);
+console.log(avgRuns);
+
+
 
 
 
